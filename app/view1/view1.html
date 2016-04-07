@@ -1,0 +1,23 @@
+<ul class="dropdown movesDropdown col-xs-1 col-sm-3">
+    <button class="btn btn-default dropdown-toggle" type="button" id="MovesDropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        <span class="glyphicon glyphicon-film" aria-hidden="true"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="MovesDropdownMenu">
+        <li class="dropdown-header menuItem">Move Breakdowns</li>
+        <li class="menuItem"><a href="templates/americana%20from%20mount.html">Americana From Mount</a></li>
+        <li class="menuItem"><a href="templates/back%20control%20from%20mount.html">Back Control From Mount</a></li>
+        <li class="menuItem"><a href="templates/choke%20from%20guard.html">Choke From Guard</a></li>
+        <li class="menuItem"><a href="templates/double%20leg.html">Double Leg</a></li>
+        <li class="menuItem"><a href="templates/flip%20sweep.html">Flip Sweep</a></li>
+        <li class="menuItem"><a href="templates/kimura%20from%20guard.html">Kimura From Guard</a></li>
+        <li class="menuItem"><a href="templates/kimura%20sweep.html">Kimura Sweep</a></li>
+        <li class="menuItem"><a href="templates/knee%20on%20bellie-armbar.html">Knee on Belly Armbar</a></li>
+        <li class="menuItem"><a href="templates/mounted%20cross%20gi%20choke.html">Mounted Cross Gi Choke</a></li>
+        <li class="menuItem"><a href="templates/S-mount%20armbar.html">S Mount Armbar</a></li>
+    </ul>
+    <ul ng-repeat="item in items">
+        <li class="menuItem">
+            <a href="{{item.movieUrl}}">{{item.name}}</a>
+        </li>
+    </ul>
+</div>

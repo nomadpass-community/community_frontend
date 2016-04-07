@@ -1,0 +1,459 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+
+body {
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+    background-attachment:fixed;
+    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    font-size:12px;
+    height:100%;
+    margin:0px;
+    width:100%;
+}
+
+/* Portrait layout (default) */
+.app {
+    background:url(../img/logo.png) no-repeat center top; /* 170px x 200px */
+    position:absolute;             /* position in the center of the screen */
+    left:50%;
+    top:50%;
+    height:50px;                   /* text area height */
+    width:225px;                   /* text area width */
+    text-align:center;
+    padding:180px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
+    margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
+                                   /* offset horizontal: half of text area width */
+}
+
+/* Landscape layout (with min-width) */
+@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
+    .app {
+        background-position:left center;
+        padding:75px 0px 75px 170px;  /* padding-top + padding-bottom + text area = image height */
+        margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
+                                      /* offset horizontal: half of image width and text area width */
+    }
+}
+
+h1 {
+    font-size:24px;
+    font-weight:normal;
+    margin:0px;
+    overflow:visible;
+    padding:0px;
+    text-align:center;
+}
+
+.event {
+    border-radius:4px;
+    -webkit-border-radius:4px;
+    color:#FFFFFF;
+    font-size:12px;
+    margin:0px 30px;
+    padding:2px 0px;
+}
+
+.event.listening {
+    background-color:#333333;
+    display:block;
+}
+
+.event.received {
+    background-color:#4B946A;
+    display:none;
+}
+
+@keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+ 
+@-webkit-keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+ 
+.blink {
+    animation:fade 3000ms infinite;
+    -webkit-animation:fade 3000ms infinite;
+}
+
+@media (min-width: 768px){
+    .container-sm-height {
+        display:table;
+        padding-left:0px;
+        padding-right:0px;
+    }
+    .row-sm-height{
+        display:table-row;
+    }
+    
+    .col-sm-height{
+        display:table-column;
+    }
+}
+
+@media (min-width: 400px){
+    .navbar header{
+        position: relative;
+    }
+    
+    
+    .navbar img {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        width: 70%;
+    }
+}
+
+.img-responsive{
+    margin: 0px;
+    border: 3px;
+    box-shadow: rgba(0,0,0,0.5) 10px 10px 60px;
+}
+
+.navbar{
+    margin-bottom: 0px;
+    transition: all;
+}  
+
+.navbar-img{
+    margin-bottom:0px;
+    padding:30px 15px;
+}
+
+.navbar-toggle{
+    
+}
+
+.menuIcon{
+    min-width: 80px;
+    max-width: 200px;
+}
+
+.menuItem{
+    font-size: 18px;
+}
+
+.header{
+    background-color: #292b37;
+    width: 100%;
+    padding: 30px 10%;
+}
+
+.headerText, .headerText a{
+    margin-top: 20px;
+    color: #FFFFFF;
+    font-family: 'Brandon Text', 'Myriad Pro', 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+    font-size: 14px;
+    padding-right: 20px;
+    text-transform: capitalize;
+}
+
+.logo{
+    align-content: left;
+}
+
+.subHeader {
+    background-color: #f6f5f5;
+    width: 100%;
+    height: 40px;
+    padding: 10px 10%;
+}
+
+.subHeaderText, .subHeaderText a{
+    color: black;
+    font-family: 'Brandon Grotesque', Myriad, sans-serif;
+    font-size: 14px;
+    padding-right: 20px;
+    text-transform: capitalize;
+}
+
+.title1{
+    font-family: 'Raleway', sans-serif;
+    font-size: 36px;
+}
+
+.title2{
+    font-family: 'Raleway', sans-serif;
+    font-weight: lighter;
+    font-size: 28px;
+}
+
+.title3{
+    font-family: 'Raleway', sans-serif;
+    font-weight: lighter;
+    font-size: 22px;
+}
+
+.title4{
+    font-family: 'Raleway', sans-serif;
+    font-weight: lighter;
+    font-size: 18px;
+}
+
+.titleRed{
+    font-family: 'Brandon Text', 'Raleway', sans-serif;
+    font-size: 34px;
+    color: #f55849; 
+}
+
+.spacing{
+    padding: 10px 20%;
+}
+
+.locationSearchText{
+    margin-top: 30px;
+    font-family: 'Brandon Text', 'Raleway', sans-serif;
+    font-size: 22px;
+}
+
+@font-face {  
+  font-family: Brandon Grotesque, 'Muli', sans-serif;  
+  src: url(/app/fonts/brandon-grotesque.ttf) format("truetype");
+}
+
+#centeredContent{
+    align-content: center;
+    text-align: center;
+}
+
+.largePin{
+    background: url("/app/img/largePin.png");
+    height: 71px;
+    width: 62px;
+    position: relative;
+    left: 48%;
+    margin: 40px 0;
+}
+
+.map{
+    background: url("/app/img/map.png");
+    background-repeat: repeat;
+    height: 547px;
+    margin-top: 50px;
+}
+
+.grayBackground{
+    background-color: #ececec;
+    width: 100%;
+    padding: 50px 0;
+}
+
+.btnText{
+    color: #FFFFFF;
+    font-family: Brandon Text, Myriad, sans-serif;
+}
+
+.logoutBtn {
+    background-color: #292b37 !important;
+    background-image: none;
+    border: 1px solid #f55849;
+    box-shadow: none !important;
+    color: #f55849; 
+    font-size: 14px;
+    font-stretch: unset;
+    padding: 10px !important;
+    margin: 10px;
+    text-shadow: none !important;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn {
+    background-color: #f55849 !important;
+    background-image: none;
+    border: 1px solid transparent;
+    box-shadow: none !important;
+    color: white;
+    font-size: 21px;
+    font-stretch: unset;
+    font-weight: bold;
+    padding: 15px !important;
+    text-shadow: none !important;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+}
+
+.dropdown-buddies{
+    align-content: right;
+}
+
+.menuDropdown{
+    align-content: right;
+}
+
+.footer{
+    padding: 20px 20px;
+    border-top: none !important;
+}
+
+.footerText{
+    font-family: 'Brandon Text', 'Myriad Pro', 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+    font-size: 12px;
+    text-transform: capitalize;
+}
+
+.socialiconrow{
+    position: relative;
+    bottom: 25px;
+}
+
+.mailicon
+{
+    background: url("/app/img/mailicon.png");
+    display: table;
+    height: 33px;
+    width: 33px;
+    margin-left: 5px;
+}
+
+.mailicon:hover
+{
+    background: url("/app/img/mailicon-hover.png");
+    display: table;
+    height: 33px;
+    width: 33px;
+    margin-left: 5px;
+}
+
+.fbicon
+{
+    background: url("/app/img/fbicon.png");
+    display: table;
+    height: 33px;
+    width: 33px;
+    margin-left: 5px;
+}
+
+.fbicon:hover
+{
+    background: url("/app/img/fbicon-hover.png");
+    display: table;
+    height: 33px;
+    width: 33px;
+    margin-left: 5px;
+}
+
+.twittericon
+{
+    background: url("/app/img/twittericon.png");
+    display: table;
+    height: 33px;
+    width: 33px;
+    margin-left: 5px;
+}
+
+.twittericon:hover
+{
+    background: url("/app/img/twittericon-hover.png");
+    display: table;
+    height: 33px;
+    width: 33px;
+    margin-left: 5px;
+}
+
+.instagramicon
+{
+    background: url("/app/img/instagramicon.png");
+    display: table;
+    height: 33px;
+    width: 33px;
+    margin-left: 5px;
+}
+
+.instagramicon:hover
+{
+    background: url("/app/img/instagramicon-hover.png");
+    display: table;
+    height: 33px;
+    width: 33px;
+    margin-left: 5px;
+}
+
+.linkedinicon
+{
+    background: url("/app/img/linkedinicon.png");
+    display: table;
+    height: 33px;
+    width: 33px;
+    margin-left: 5px;
+}
+
+.linkedinicon:hover
+{
+    background: url("/app/img/linkedinicon-hover.png");
+    display: table;
+    height: 33px;
+    width: 33px;
+    margin-left: 5px;
+}
+
+.meetupicon
+{
+    background: url("/app/img/meetupicon.png");
+    display: table;
+    height: 33px;
+    width: 33px;
+    margin-left: 5px;
+}
+
+.meetupicon:hover
+{
+    background: url("/app/img/meetupicon-hover.png");
+    display: table;
+    height: 33px;
+    width: 33px;
+    margin-left: 5px;
+}
+
+.sampleNomadPass
+{
+    background: url("/app/img/sampleNomadPass.png");
+    height: 318px;
+    width: 225px;
+    position: relative;
+    left: 40%;
+    margin: 0 0;
+}

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>BJJ 101</title>
+  <meta name="description" content="">
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="msapplication-tap-highlight" content="no" />
+  <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+
+  <link href="css/index.css" type="text/css" rel="stylesheet" />
+  <link href="css/bootstrap-responsive.css" type="text/css" rel="stylesheet" />
+  <link href="css/bootstrap-responsive.min.css" type="text/css" rel="stylesheet" />
+  <link href="css/bootstrap.css" type="text/css" rel="stylesheet" />
+  <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+  <link rel="stylesheet" href="css/app.css">
+  <script type="text/javascript">
+    function loadPage(href)
+    {
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.open("GET", href, false);
+      xmlhttp.send();
+      return xmlhttp.responseText;
+    }
+  </script>
+  <script type="text/javascript" src="cordova.js"></script>
+  <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+<body>
+
+  <header>
+    <div class="navMenuHeader" class="nav navbar-inverse" role="navigation">
+      <div class="dropdown movesDropdown col-xs-1 col-sm-3">
+        <button class="btn btn-default dropdown-toggle" type="button" id="MovesDropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          <span class="glyphicon glyphicon-film" aria-hidden="true"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="MovesDropdownMenu">
+          <li class="dropdown-header menuItem">Move Breakdowns</li>
+          <li class="menuItem"><a href="templates/americana%20from%20mount.html">Americana From Mount</a></li>
+          <li class="menuItem"><a href="templates/back%20control%20from%20mount.html">Back Control From Mount</a></li>
+          <li class="menuItem"><a href="templates/choke%20from%20guard.html">Choke From Guard</a></li>
+          <li class="menuItem"><a href="templates/double%20leg.html">Double Leg</a></li>
+          <li class="menuItem"><a href="templates/flip%20sweep.html">Flip Sweep</a></li>
+          <li class="menuItem"><a href="templates/kimura%20from%20guard.html">Kimura From Guard</a></li>
+          <li class="menuItem"><a href="templates/kimura%20sweep.html">Kimura Sweep</a></li>
+          <li class="menuItem"><a href="templates/knee%20on%20bellie-armbar.html">Knee on Belly Armbar</a></li>
+          <li class="menuItem"><a href="templates/mounted%20cross%20gi%20choke.html">Mounted Cross Gi Choke</a></li>
+          <li class="menuItem"><a href="templates/S-mount%20armbar.html">S Mount Armbar</a></li>
+        </ul>
+      </div>
+      <h1 class="header col-xs-7 col-sm-6" >BJJ 101</h1>
+      <div class="dropdown menuDropdown col-xs-3 col-sm-3">
+        <button class="btn btn-default dropdown-toggle" type="button" id="MainDropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          <span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="MainDropdownMenu">
+          <li class="dropdown-header menuItem">Main Menu</li>
+          <li class="menuItem"><a href="index.html">Videos</a></li>
+          <li class="menuItem"><a href="#">Other Apps</a></li>
+          <li class="menuItem"><a href="#">Rate This App</a></li>
+          <li class="menuItem" onclick="window.plugins.socialsharing.share('Check out BJJ101, the brazilian jiu-jitsu app!', null, null, 'https://itunes.apple.com/us/app/bjj-101-brazilian-jiu-jitsu-fundamentals/id1020007504')">
+              <a href="#">Share This App</a>
+          </li>
+          <li class="menuItem"><a href="#">Like On Facebook <img src="img/facebook_icon_small.png" width="20"> </a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+
+  <div ng-view>
+    <div ng-repeat="item in items"></div>
+      <br>
+
+      <div>
+        <h1 ng-bind="{{description}}" class="itemHeader"></h1>
+      </div>
+
+      <div>
+        <img class="itemGif" src="{{gifUrl}}">
+      </div>
+
+      <video preload="auto" controls class="itemVideo" height="100px" >
+        <source src="{{movieUrl}}" type="video/mp4">
+        <source src="movie.ogg" type="video/ogg">
+        Your browser does not support the video tag.
+      </video>
+  </div>
+
+
+
+
+  <!-- JS, Jquery, Bootstrap -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script type="text/javascript" src="js/index.js"></script>
+  <script type="text/javascript" src="lib/bootstrap.js"></script>
+  <script type="text/javascript" src="lib/jquery.min.js"></script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+
+  <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+  -->
+  <script src="lib/angular/angular.js"></script>
+  <script src="lib/angular/angular-route.min.js"></script>
+  <script src="//code.angularjs.org/1.4.4/angular-touch.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="js/app.js"></script>
+  <script src="view1/view1.js"></script>
+  <script src="view2/view2.js"></script>
+  <script src="components/version/version.js"></script>
+  <script src="components/version/version-directive.js"></script>
+  <script src="components/version/interpolate-filter.js"></script>
+  <script src="js/controllers/ItemController.js"></script>
+  <script src="js/controllers/ItemListController.js"></script>
+  <script src="js/services/itemData.js"></script>
+</body>
+</html>
