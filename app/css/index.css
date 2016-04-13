@@ -316,6 +316,28 @@ h1 {
     margin-bottom: 30px;
 }
 
+.loginBtn {
+    background-color: #f55849 !important;
+    background-image: none;
+    border: 1px solid transparent;
+    box-shadow: none !important;
+    color: white;
+    font-stretch: unset;
+    padding: 10px !important;
+    text-shadow: none !important;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+}
+
 .dropdown-buddies{
     align-content: right;
 }

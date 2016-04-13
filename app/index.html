@@ -46,7 +46,7 @@
   <header>
     <div class="header" class="nav navbar-inverse" role="navigation">
         <img class="logo" src="/app/img/logo.png" ></img>
-        <a href="http://nomadpass.com/index.php/"><input type="submit" class="logoutBtn btnData pull-right" ng-click="logout()" value="Logout"></a>
+        <input type="submit" class="logoutBtn btnData pull-right" ng-click="logout()" value="Logout">
         <p class="headerText pull-right"><a href="">List Your Space</a></p>
         <p class="headerText pull-right"><a href="http://nomadpass.com/index.php/en/5/about_us">About Us</a></p>
         <p class="headerText pull-right"><a href="http://nomadpass.com/index.php/destination/index">Destination</a></p>
@@ -61,15 +61,7 @@
       <p class="subHeaderText pull-left"><a href="">Edit My Profile</a></p>
   </div>
     
-    <span>His name is {{auth.profile.nickname}}</span>
-    
-     <a class="btn btn-social btn-linkedin">
-        <span class="fa fa-linkedin"></span> Sign in with LinkedIn
-      </a>
-      
-      <a class="btn btn-social btn-linkedin fa fa-linkedin">
-        <input type="submit" class="btn btn-social btn-linkedin fa fa-linkedin" ng-controller="LoginCtrl" ng-click="auth.signin()" value="Sign in with LinkedIn">
-      </a>
+    <input type="submit" class="loginBtn btnData" ng-controller="LoginCtrl" ng-click="auth.signin()" value="Log In">
 
   <div id="centeredContent">
       <div class="largePin"></div>
