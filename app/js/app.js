@@ -216,6 +216,25 @@ function getLatitudeAndLongitude(callback){
               lonValue = response[0].longitude;  
               tokens.push(1);
               console.log("Completed lat " + latValue + " lon " + lonValue + " " + tokens.length);
+              
+              //Hide the placeholder map, and show the real map
+              document.getElementById("map").style.display="none";
+              document.getElementById("mapid").style.display="";
+              var mymap = L.map('mapid').setView([latValue, lonValue], 13);
+              var myIcon = L.icon({
+                  iconUrl: '/app/img/largePin.png',
+                  iconSize: [31, 35]
+              });
+              L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+                  attribution: '',
+                  maxZoom: 18,
+                  id: 'mapbox.satellite',
+                  accessToken: 'pk.eyJ1IjoiaGVuZHJpeHNhbiIsImEiOiJjaW16d3JqaHYwNjE4dXdtNGsxdWNydGloIn0.p8IwV2k5h36nf7p-TgxtUA'
+              }).addTo(mymap);  
+              var marker = L.marker([latValue, lonValue], {icon: myIcon}).addTo(mymap);
+              //marker.bindPopup(firstName + " " + lastName).openPopup();
+              
+              
               //Look for logged in user in Nomad Pass
               token1.push(getUsersFromNomadPassAsync());
           }
@@ -238,7 +257,7 @@ function MainAsyncFunction(callback){
 
 function checkinLatestLocation(){
     //once ALL the sub operations are completed, this callback will be invoked
-    console.log("Final Push!");
+    console.log("Checking In User");
     console.log(idValue);
     console.log(latValue);
     console.log(lonValue);

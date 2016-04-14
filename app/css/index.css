@@ -252,11 +252,15 @@ h1 {
     margin: 40px 0;
 }
 
-.map{
+#map{
     background: url("/app/img/map.png");
-    background-repeat: repeat;
     height: 547px;
-    margin-top: 50px;
+    margin-top: 50px; 
+}
+
+#mapid { 
+    height: 547px; 
+    margin-top: 50px; 
 }
 
 .grayBackground{
