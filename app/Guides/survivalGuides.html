@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Nomad Pass - Survival Guides</title>
+  <meta name="description" content="">
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="msapplication-tap-highlight" content="no" />
+  <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
+
+  <link href="../css/index.css" type="text/css" rel="stylesheet" />
+  <link href="../css/bootstrap-responsive.min.css" type="text/css" rel="stylesheet" />
+  <link href="../css/font-awesome.css" type="text/css" rel="stylesheet" />
+  <link href="../css/font-awesome.min.css" type="text/css" rel="stylesheet" />
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+  <!-- Fonts -->
+  <link href='https://fonts.googleapis.com/css?family=Raleway:500,700,300,400' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>    
+    
+  <link rel="stylesheet" href="../css/app.css">
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+  <link href='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css' rel='stylesheet' />
+    
+  <!-- Javascript -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <script src="../lib/underscore-1.4.4.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.js"></script>
+    <!-- We use client cookies to save the user credentials -->
+    <script src="//code.angularjs.org/1.2.16/angular-cookies.min.js"></script>
+
+    <!-- Auth0 Lock script and AngularJS module -->
+    <script src="//cdn.auth0.com/js/lock-9.0.min.js"></script>
+    <script src="//cdn.auth0.com/w2/auth0-6.8.js"></script>
+    <!-- angular-jwt and angular-storage -->
+    <script type="text/javascript" src="//cdn.rawgit.com/auth0/angular-storage/master/dist/angular-storage.js"></script>
+    <script type="text/javascript" src="//cdn.rawgit.com/auth0/angular-jwt/master/dist/angular-jwt.js"></script>
+
+    <script src="//cdn.auth0.com/w2/auth0-angular-4.js"> </script>
+    <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+    <script src='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.js'></script>
+    
+</head>
+<body>
+    <header>
+        <div class="header" class="nav navbar-inverse" role="navigation">
+            <img class="logo" src="/app/img/logo.png" ></img>
+            <input type="submit" id="logoutBtn" class="logoutBtn btnData pull-right" ng-controller="LoginController" ng-click="logout()" value="Logout">
+            <input type="submit" id="loginBtn" class="loginBtn btnData pull-right" ng-controller="LoginController" ng-click="auth.signin()" value="Log In" style="display:none;">
+            <p class="headerText pull-right">List Your Space</p>
+            <a href="http://nomadpass.com/index.php/en/5/about_us"><p class="headerText pull-right">About Us</p></a>
+            <a href="http://nomadpass.com/index.php/destination/index"><p class="headerText pull-right">Destination</p></a>
+        </div>
+    </header>
+
+    <div class="subHeader" class="nav navbar-inverse" role="navigation">
+      <a href="/app/map.html" target="_self"><p class="subHeaderText pull-left">My Pass</p></a>
+      <a href="/app/map.html" target="_self"><p class="subHeaderText pull-left">Community</p></a>
+      <a href="/app/Guides/survivalGuides.html" target="_self"><p class="subHeaderText pull-left">Survival Guide</p></a>
+      <a href="/app/" target="_self"><p class="subHeaderText pull-left">City</p></a>
+      <a href="/app/Profile/editProfile.html" target="_self"><p class="subHeaderText pull-left">Edit My Profile</p></a>
+    </div>
+
+    <div id="centeredContent">
+      <div class="largePin"></div>
+      <div class="title1">Survival Guides</div>
+      <div class="title2">Resources to help you thrive around the globe.</div>
+    </div>
+
+    <div class="grayBackground" id="centeredContent">
+          <div id="containerOfGuides" class="grayBackground" ng-controller="GuidesController">
+              <div class="guides pull-left" ng-repeat="guide in guides">
+                <img id="passBackgroundPic" src="/app/img/npbackground1.jpg"/>
+                <img id="guideProfilePicBackground"/>
+                <img id="guideProfilePic" ng-src="{{guide.profilePicUrl}}"/>
+                <div class="guideNameRed">{{guide.name}}</div>
+                <div class="guideSubtitle">{{guide.subtitle}}</div>
+            </div>
+          </div> 
+    </div>
+      
+    <div class="grayBackground" id="centeredContent">
+          <input type="submit" class="btn redBtn btnText btnData" value="Earn Rewards">
+    </div>
+
+
+    <div class="footer" role="navigation">
+    <div class="footerText">&#169; 2015 NomadPass. All Rights Reserved</div>
+    <div class="pull-right socialiconrow">
+        <a target="_blank" href="mailto:hello@nomadpass.com"><div class="mailicon pull-left"></div></a>
+        <a target="_blank" href="https://www.facebook.com/nomadpass/"><div class="fbicon pull-left"></div></a>
+        <a target="_blank" href="https://twitter.com/nomad_pass"><div class="twittericon pull-left"></div></a>
+        <a target="_blank" href="https://www.instagram.com/nomadpass/"><div class="instagramicon pull-left"></div></a>
+        <a target="_blank" href="https://www.linkedin.com/company/nomad-pass"><div class="linkedinicon pull-left"></div></a>
+        <a target="_blank" href="http://www.meetup.com/Nomadpass/"><div class="meetupicon pull-left"></div></a>
+    </div>
+    </div>
+
+
+    <!-- JS, Jquery, Bootstrap -->
+    <script type="text/javascript" src="../Shared/index.js"></script>
+    <script type="text/javascript" src="../lib/jquery.min.js"></script>
+    <script type="text/javascript" src="../lib/bootstrap.js"></script>
+    <!-- In production use:
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+        <script src="lib/angular/angular-route.min.js"></script>
+    -->
+    <script src="../app.js"></script>
+    <script src="../config.js"></script>
+    <script src="../view1/view1.js"></script>
+    <script src="../view2/view2.js"></script>
+    <script src="../components/version/version.js"></script>
+    <script src="../components/version/version-directive.js"></script>
+    <script src="../components/version/interpolate-filter.js"></script>
+    <script src="../Item/ItemController.js"></script>
+    <script src="../Item/ItemListController.js"></script>
+    <script src="../Login/LoginController.js"></script>
+    <script src="../Item/itemData.js"></script>
+    <script src="../User/UserController.js"></script>
+    <script src="../User/UserInfoController.js"></script>   
+    <script src="../Guides/GuidesController.js"></script>
+    
+  </body>
+</html>
