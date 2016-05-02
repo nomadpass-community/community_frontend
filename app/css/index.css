@@ -164,6 +164,7 @@ h1 {
     background-color: #292b37;
     width: 100%;
     padding: 30px 10%;
+    overflow: hidden;
 }
 
 .headerText, .headerText a{
@@ -182,8 +183,8 @@ h1 {
 .subHeader {
     background-color: #f6f5f5;
     width: 100%;
-    height: 40px;
     padding: 10px 10%;
+    overflow: hidden;
 }
 
 .subHeaderText, .subHeaderText a{
@@ -221,6 +222,24 @@ h1 {
     font-family: 'Brandon Text', 'Raleway', sans-serif;
     font-size: 34px;
     color: #f55849; 
+}
+
+.userNameRed, .guideNameRed{
+    font-family: 'Brandon Text', 'Raleway', sans-serif;
+    font-size: 24px;
+    color: #f55849;
+    position: relative;
+    bottom: 235px;
+}
+
+.userJobTitle, .guideSubtitle{
+    font-family: 'Raleway', sans-serif;
+    font-weight: lighter;
+    font-size: 18px;
+    color: #707070;
+    position: relative;
+    bottom: 235px;
+    margin: 0 5px;
 }
 
 .spacing{
@@ -266,7 +285,54 @@ h1 {
 .grayBackground{
     background-color: #ececec;
     width: 100%;
-    padding: 50px 0;
+    overflow: hidden;
+}
+
+.nearbyNomadPass, .guides{
+    background-color: white;
+    margin: 30px 30px;
+    width: 240px;
+    border-radius: 3%;
+    height: 300px;
+}
+
+#passBackgroundPic{
+    width: 240px;
+    border-radius: 5% 5% 0px 0px !important
+}
+
+#pin{
+    position: relative;
+    bottom: 135px;
+    left: 39%;
+}
+
+#userLocation{
+    position: relative;
+    left: 39%;
+    bottom: 169px;
+    font-family: 'Brandon Text', 'Raleway', sans-serif;
+    color: #ffffff;
+}
+
+#userProfilePicBackground, #guideProfilePicBackground{
+    width: 130px;
+    height: 130px;
+    float: inherit;
+    position: relative;
+    bottom: 120px;
+    left: 23%;
+    border-radius: 50%;
+    background-color: white;
+    border: 0;
+}
+
+#userProfilePic, #guideProfilePic{
+    width: 120px;
+    height: 120px;
+    position: relative;
+    bottom: 245px;
+    border-radius: 50%;
 }
 
 .btnText{
@@ -297,7 +363,6 @@ h1 {
 }
 
 .btn {
-    background-color: #f55849 !important;
     background-image: none;
     border: 1px solid transparent;
     box-shadow: none !important;
@@ -320,6 +385,15 @@ h1 {
     margin-bottom: 30px;
 }
 
+.linkedinBtn {
+    background-color: #007bb6 !important;
+}
+
+.redBtn{
+    background-color: #f55849 !important;
+    margin: 20px !important;
+}
+
 .loginBtn {
     background-color: #f55849 !important;
     background-image: none;
@@ -339,7 +413,7 @@ h1 {
     -moz-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
     letter-spacing: 1px;
-    margin-bottom: 30px;
+    margin: 10px;
 }
 
 .dropdown-buddies{
@@ -472,14 +546,4 @@ h1 {
     height: 33px;
     width: 33px;
     margin-left: 5px;
-}
-
-.sampleNomadPass
-{
-    background: url("/app/img/sampleNomadPass.png");
-    height: 318px;
-    width: 225px;
-    position: relative;
-    left: 40%;
-    margin: 0 0;
 }

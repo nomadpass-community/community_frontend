@@ -3,20 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Nomad Pass Community - Sign In</title>
+  <title>Nomad Pass Community</title>
   <meta name="description" content="">
   <meta name="format-detection" content="telephone=no" />
   <meta name="msapplication-tap-highlight" content="no" />
   <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
   <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
 
-  <link href="https://github.com/lipis/bootstrap-social/blob/gh-pages/bootstrap-social.css" type="text/css" />
   <link href="css/index.css" type="text/css" rel="stylesheet" />
-  <link href="css/bootstrap-responsive.css" type="text/css" rel="stylesheet" />
   <link href="css/bootstrap-responsive.min.css" type="text/css" rel="stylesheet" />
   <link href="css/font-awesome.css" type="text/css" rel="stylesheet" />
   <link href="css/font-awesome.min.css" type="text/css" rel="stylesheet" />
-  <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet" />
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
   <!-- Optional theme -->
@@ -26,6 +23,8 @@
   <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>    
     
   <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+  <link href='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css' rel='stylesheet' />
     
   <!-- Javascript -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
@@ -48,22 +47,72 @@
     <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
     <script src='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.js'></script>
     
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-sanitize.min.js"></script>
+    
+
 </head>
 <body>
+    <header>
+        <div class="header" class="nav navbar-inverse" role="navigation">
+            <img class="logo" src="/app/img/logo.png" ></img>
+            <input type="submit" id="logoutBtn" class="logoutBtn btnData pull-right" ng-controller="LoginController" ng-click="logout()" value="Logout">
+            <input type="submit" id="loginBtn" class="loginBtn btnData pull-right" ng-controller="LoginController" ng-click="auth.signin()" value="Log In" style="display:none;">
+            <p class="headerText pull-right">List Your Space</p>
+            <a href="http://nomadpass.com/index.php/en/5/about_us"><p class="headerText pull-right">About Us</p></a>
+            <a href="http://nomadpass.com/index.php/destination/index"><p class="headerText pull-right">Destination</p></a>
+        </div>
+    </header>
 
-  <div id="centeredContent">
-      <div class="titleRed spacing">Join Nomad Pass Community</div>
-      <div class="title3 spacing">To create your Nomad Pass we will use your name, profile picture, job title, and geolocation from your Linked-In profile.</div>
-      <div class="title4 spacing ">Example:</div>
-      <img src="img/sampleNomadPass.png" />
-      <div class="spacer"></div>
-    
-      <a class="btn-social btn-linkedin btnData btn linkedinBtn" ng-controller="LoginController" ng-click="auth.signin()">
-        <span class="fa fa-linkedin"></span> Sign in with LinkedIn
-      </a>
-     
-  </div>
-  
+    <div class="subHeader" class="nav navbar-inverse" role="navigation">
+      <a href="/app/map.html" target="_self"><p class="subHeaderText pull-left">My Pass</p></a>
+      <a href="/app/map.html" target="_self"><p class="subHeaderText pull-left">Community</p></a>
+      <a href="/app/Guides/survivalGuides.html" target="_self"><p class="subHeaderText pull-left">Survival Guide</p></a>
+      <a href="/app/" target="_self"><p class="subHeaderText pull-left">City</p></a>
+      <a href="/app/Profile/editProfile.html" target="_self"><p class="subHeaderText pull-left">Edit My Profile</p></a>
+    </div>
+
+    <div id="centeredContent">
+      <div class="largePin"></div>
+      <div class="title1">Nomad Pass Community</div>
+      <div class="title2">Find your fellow nomads around the globe.</div>
+    </div>
+
+    <div id="map"></div>    
+    <div id="mapid" ng-controller="MapController" style="display:none;"></div>
+
+    <div class="grayBackground" id="centeredContent">
+        <div class="titleRed">Search for Nomads Nearby</div>
+
+        <div id="containerOfPasses" ng-controller="UserInfoController">
+            <div class="nearbyNomadPass pull-left" ng-repeat="user in $parent.nomads" >
+                <img id="passBackgroundPic" src="/app/img/npbackground1.jpg"/>
+                <img id="pin" src="img/passPinMini.png"/>
+                <div id="userLocation">{{user.cityAbbreviation}}</div>
+                <img id="userProfilePicBackground"/>
+                <img id="userProfilePic" ng-src="{{user.profilePicUrl}}"/>
+                <div class="userNameRed">{{user.firstName}}</div>
+                <div class="userJobTitle">{{user.jobTitle}}</div>
+            </div>
+        </div> 
+
+    </div>
+    <div class="grayBackground" id="centeredContent">
+          <input type="submit" class="btn redBtn btnText btnData" value="Earn Rewards">
+    </div>
+
+
+    <div class="footer" role="navigation">
+    <div class="footerText">&#169; 2015 NomadPass. All Rights Reserved</div>
+    <div class="pull-right socialiconrow">
+        <a target="_blank" href="mailto:hello@nomadpass.com"><div class="mailicon pull-left"></div></a>
+        <a target="_blank" href="https://www.facebook.com/nomadpass/"><div class="fbicon pull-left"></div></a>
+        <a target="_blank" href="https://twitter.com/nomad_pass"><div class="twittericon pull-left"></div></a>
+        <a target="_blank" href="https://www.instagram.com/nomadpass/"><div class="instagramicon pull-left"></div></a>
+        <a target="_blank" href="https://www.linkedin.com/company/nomad-pass"><div class="linkedinicon pull-left"></div></a>
+        <a target="_blank" href="http://www.meetup.com/Nomadpass/"><div class="meetupicon pull-left"></div></a>
+    </div>
+    </div>
+
 
     <!-- JS, Jquery, Bootstrap -->
     <script type="text/javascript" src="Shared/index.js"></script>
@@ -85,8 +134,10 @@
     <script src="Login/LoginController.js"></script>
     <script src="Item/itemData.js"></script>
     <script src="User/UserController.js"></script>
-    <script src="User/UserInfoController.js"></script>
+    <script src="User/UserInfoController.js"></script> 
     <script src="User/usersService.js"></script>
+    <script src="Map/MapController.js"></script>
+    <script src="Map/mapService.js"></script>
     
   </body>
 </html>

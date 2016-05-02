@@ -1,0 +1,9 @@
+<div class="nearbyNomadPass pull-left" ng-repeat="user in users">
+    <img id="passBackgroundPic" src="/app/img/npbackground1.jpg"/>
+    <img id="pin" src="img/passPinMini.png"/>
+    <div id="userLocation">{{user.cityAbbreviation}}</div>
+    <img id="userProfilePicBackground"/>
+    <img id="userProfilePic" src="{{user.profilePicUrl}}"/>
+    <div class="userNameRed">{{user.firstName}}</div>
+    <div class="userJobTitle">{{user.jobTitle}}</div>
+</div>
